@@ -17,6 +17,8 @@ function setBusy(value, message = '') {
 function fail(err) { $('error').textContent = err.message; $('error').hidden = false; }
 async function accept(data) {
   const mine = ++revision; current = data; renderResult(data); $('error').hidden = true;
+  // Rendering replaces the inventory inputs; keep the new controls locked until replay finishes.
+  if (busy) setBusy(true, $('status').textContent);
   if (!data.receipt) { $('verification').textContent = 'A feasible slate is needed before a receipt can be checked.'; return; }
   $('verification').textContent = 'Replaying both objectives with the independent checker…';
   try { const checked = await api('verify', {receipt: data.receipt}); if (revision === mine) renderVerification(checked); }
@@ -79,7 +81,7 @@ async function connection() {
     const health = await api('health'); qlooConfigured = health.qloo_configured;
     $('connection').textContent = qlooConfigured ? 'Qloo discovery available · public cultural references only' : 'Live Qloo access pending · explore the workshop below';
     $('builder-availability').textContent = qlooConfigured ? 'Qloo will discover and rank books. Each search sends only the public reference you enter.' : 'Live discovery is awaiting event API access. You can explore the complete workshop without a credential.';
-    $('discover').disabled = !qlooConfigured;
+    $('discover').disabled = busy || !qlooConfigured;
   } catch { $('connection').textContent = 'Could not check live access. The workshop remains available.'; }
 }
 await Promise.all([connection(), reset()]);
