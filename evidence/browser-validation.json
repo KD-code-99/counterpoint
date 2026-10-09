@@ -1,7 +1,7 @@
 {
   "scope": "Owned Counterpoint workshop only; no live Qloo calls or customer outcome claims.",
-  "checked_at": "2026-10-09T00:51:39.210Z",
-  "url": "http://127.0.0.1:4319",
+  "checked_at": "2026-10-09T12:18:41.537Z",
+  "url": "https://counterpoint-curator.vercel.app",
   "widths": [
     {
       "width": 320,
@@ -22,6 +22,7 @@
   ],
   "checks": [
     "Making a selected book unavailable changes the slate.",
+    "Replacement inventory controls stay disabled while receipt replay is delayed.",
     "Conflicting pin/stock constraints show an actionable empty state and disable receipt export.",
     "Downloaded receipt verifies after reload; an edited receipt is rejected.",
     "Keyboard search reports missing Qloo access explicitly; Escape closes the dialog.",

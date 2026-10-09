@@ -1,7 +1,7 @@
 {
   "status": "PASS",
-  "checked_at": "2026-10-09T00:14:08.247Z",
-  "endpoint": "http://127.0.0.1:4318/api/mcp",
+  "checked_at": "2026-10-09T12:15:12.069Z",
+  "endpoint": "https://counterpoint-curator.vercel.app/api/mcp",
   "client": "@modelcontextprotocol/client",
   "scope": "Official client transport interoperability using authored workshop fixtures; not live Qloo evidence or official certification.",
   "checks": [

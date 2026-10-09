@@ -1,6 +1,6 @@
 {
   "schema": "counterpoint.receipt.v1",
-  "created_at": "2026-10-09T00:51:58.281Z",
+  "created_at": "2026-10-09T12:18:52.033Z",
   "problem": {
     "boards": [
       {
@@ -143,5 +143,5 @@
     "note": "All titles and scores in this workshop are invented to demonstrate the selection objective. They are not Qloo output or a measured product result.",
     "score_rule": "Authored integer test scores; live mode will use 1000/rank rounded to the nearest integer."
   },
-  "sha256": "072f59c702f186489de1e316d589ba39fce3d9be4ba5cf7f79e996a769f31331"
+  "sha256": "859a0c571c9c045739ec8f79034cd45db0846086a59884ad9a671c276b2f5b8f"
 }

@@ -21,9 +21,16 @@ async function main(){
     }
     const before=await page.locator('.book h3').allTextContents();
     const selectedTitle=before[0];
-    await page.getByLabel(`${selectedTitle} available`,{exact:true}).uncheck();
-    await page.waitForFunction(title=>![...document.querySelectorAll('.book h3')].some(e=>e.textContent===title),selectedTitle);
+    let releaseReplay;
+    const replayGate=new Promise(resolve=>{releaseReplay=resolve;});
+    await page.route('**/api/verify',async route=>{await replayGate;await route.continue();},{times:1});
+    try{
+      await page.getByLabel(`${selectedTitle} available`,{exact:true}).uncheck();
+      await page.waitForFunction(title=>![...document.querySelectorAll('.book h3')].some(e=>e.textContent===title),selectedTitle);
+      assert.equal(await page.getByLabel(`${selectedTitle} available`,{exact:true}).isDisabled(),true);
+    }finally{releaseReplay();}
     report.checks.push('Making a selected book unavailable changes the slate.');
+    report.checks.push('Replacement inventory controls stay disabled while receipt replay is delayed.');
     await page.getByRole('button',{name:'Clear pins & stock changes'}).click();
     await page.getByLabel('Pin A Map of Unwritten Cities',{exact:true}).check();
     await page.getByLabel('A Map of Unwritten Cities available',{exact:true}).uncheck();

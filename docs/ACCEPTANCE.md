@@ -15,8 +15,8 @@
 - [x] Responsive checks at 320/768/1024/1440px; keyboard dialog/search controls pass. Axe 4.14.0 found no violations; color-contrast has an incomplete item requiring human review. This is not a WCAG conformance claim.
 - [x] Export and print affordances work; receipt verification works after page reload. Print retains the workshop label.
 - [x] Official MCP client 2.3.1 exercises discovery of four tools, workshop curation, receipt verification and access errors in legacy and automatic negotiation modes.
-- [ ] Vercel public production endpoint tested without credentials.
-- [ ] Public repo and release have complete source/license/provenance, no secrets, no unsupported claims.
+- [x] Vercel public production endpoint tested without credentials. Browser workflow and official MCP client passed against https://counterpoint-curator.vercel.app. A real latency-related checkbox race was fixed and a delayed-replay regression now passes.
+- [x] Public MIT repository contains complete source, assets, setup, pinned development dependencies and bounded claims. Selected tracked source was checked for exposed credentials before publication; workflow notes remain private. A live-Qloo release remains pending.
 - [ ] Devpost required fields and images uploaded; entry submitted and read back from Devpost.
 
-21 Node tests passed on 9 October 2026. Browser and interoperability reports are in `evidence/`. All numerical results in these reports are fixture results; no live Qloo benchmark has been recorded.
+21 Node tests passed on 9 October 2026. Browser and interoperability reports in `evidence/` now cover the public deployment. All numerical results in these reports are fixture results; no live Qloo benchmark has been recorded.

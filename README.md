@@ -6,6 +6,8 @@ A bookshop curation tool that gives every cultural brief a way into a small read
 
 ## Try the decision
 
+Open the [public workshop](https://counterpoint-curator.vercel.app). No login is required. The invented-data label stays visible throughout the workshop; live Qloo discovery remains pending an event credential.
+
 Run with Node.js 24 (22.19+ supported):
 
 ```sh
@@ -43,7 +45,7 @@ No personal identities, demographic attributes, customer records or sensitive tr
 
 ## Agent tools
 
-Connect an MCP Streamable HTTP client to `http://127.0.0.1:4318/api/mcp` (or `/api/mcp` on your deployment).
+Connect an MCP Streamable HTTP client to `https://counterpoint-curator.vercel.app/api/mcp`, or `http://127.0.0.1:4318/api/mcp` when running locally.
 
 | Tool | Purpose |
 |---|---|
