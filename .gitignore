@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.vercel/
+private/
+.devpost-hackathon-state.json
+coverage/
+test-results/
+docs/JUDGE_PLAN.md
+docs/ACCESS_STATUS.md

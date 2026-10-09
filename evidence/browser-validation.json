@@ -1,0 +1,42 @@
+{
+  "scope": "Owned Counterpoint workshop only; no live Qloo calls or customer outcome claims.",
+  "checked_at": "2026-10-09T00:51:39.210Z",
+  "url": "http://127.0.0.1:4319",
+  "widths": [
+    {
+      "width": 320,
+      "horizontal_page_overflow": false
+    },
+    {
+      "width": 768,
+      "horizontal_page_overflow": false
+    },
+    {
+      "width": 1024,
+      "horizontal_page_overflow": false
+    },
+    {
+      "width": 1440,
+      "horizontal_page_overflow": false
+    }
+  ],
+  "checks": [
+    "Making a selected book unavailable changes the slate.",
+    "Conflicting pin/stock constraints show an actionable empty state and disable receipt export.",
+    "Downloaded receipt verifies after reload; an edited receipt is rejected.",
+    "Keyboard search reports missing Qloo access explicitly; Escape closes the dialog.",
+    "Explanation dialog opens by keyboard and restores focus.",
+    "Print view retains the slate and comparison; hides editing controls."
+  ],
+  "accessibility": {
+    "engine": {
+      "name": "axe-core",
+      "version": "4.14.0"
+    },
+    "violations": [],
+    "incomplete": [
+      "color-contrast"
+    ]
+  },
+  "status": "PASS"
+}

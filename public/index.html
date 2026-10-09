@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create a reading slate with room for every cultural brief. Compare priorities, adapt to stock changes, and check the decision.">
+  <title>Counterpoint — A place for every taste</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#slate">Skip to reading slate</a>
+  <header class="masthead shell">
+    <a class="wordmark" href="/" aria-label="Counterpoint home"><span class="mark" aria-hidden="true">▥</span> counterpoint<span class="period">.</span></a>
+    <nav aria-label="Main"><a href="#comparison">Compare</a><a href="#evidence">Evidence</a><button class="text-button" id="about-open">How it works ↗</button></nav>
+  </header>
+  <main class="shell">
+    <section class="intro" aria-labelledby="headline">
+      <div><p class="eyebrow">THE BOOKSHOP CURATOR’S WORKBENCH</p><h1 id="headline">A place for<br><em>every taste.</em></h1></div>
+      <div class="intro-note"><p>A small reading table. Several worlds to welcome.<br>Build a slate that gives each brief a way in.</p><button class="primary" id="briefs-open">Start with your cultural briefs <span aria-hidden="true">↗</span></button><p class="small" id="connection">Checking live discovery…</p></div>
+    </section>
+    <div class="notice" id="mode-notice"><span class="notice-dot" aria-hidden="true"></span><div><strong>Workshop · invented books and scores</strong><p>Explore the decision, then replace this example with live Qloo discovery. These are illustrative results.</p></div><button class="text-button" id="workshop-reset">Reset example</button></div>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <div id="error" class="error" role="alert" hidden></div>
+    <section class="workspace" id="slate" aria-labelledby="slate-title" tabindex="-1">
+      <div class="section-head"><div><p class="eyebrow">01 / THE READING TABLE</p><h2 id="slate-title">More than the usual favorites.</h2></div><label class="slot-control">Places on the table <select id="slots"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></label></div>
+      <div id="brief-labels" class="brief-labels"></div>
+      <div id="result"><p class="loading">Setting the table…</p></div>
+      <div class="result-actions"><button class="secondary" id="download" disabled>↓ Decision receipt</button><button class="secondary" id="print" disabled>Print reading slate</button><span class="small">Change stock or pin a title below. The whole slate adapts.</span></div>
+    </section>
+    <section class="comparison" id="comparison" aria-labelledby="comparison-title">
+      <div class="section-head"><div><p class="eyebrow">02 / THE TRADEOFF</p><h2 id="comparison-title">Who gets a way in?</h2></div><p class="section-aside">Compare two exact choices from the same books.<br>One protects the least-covered brief. One maximizes the total.</p></div>
+      <div id="comparison-content"></div>
+      <p class="footnote">Coverage is the strongest returned evidence for a brief among the selected books. Live scores are 1000 ÷ Qloo rank, rounded. They are not predictions of enjoyment or sales.</p>
+    </section>
+    <section class="inventory" id="evidence" aria-labelledby="evidence-title">
+      <div class="section-head"><div><p class="eyebrow">03 / YOUR EDITORIAL CONTROL</p><h2 id="evidence-title">Make it work on your shelves.</h2></div><button class="text-button" id="clear-constraints">Clear pins & stock changes ↺</button></div>
+      <p class="section-description">Pin a must-have. Mark a book unavailable. We’ll recompute both choices with exactly the same constraints.</p>
+      <div id="candidate-table" class="table-scroll" tabindex="0" role="region" aria-label="Candidate books and stock controls"></div>
+      <p class="footnote">Availability is your input. Qloo does not check shop stock, price or reading rights. A score of 0 means no returned evidence; it does not mean dislike.</p>
+    </section>
+    <section class="audit" aria-labelledby="audit-title">
+      <div><p class="eyebrow">04 / KEEP THE REASONING</p><h2 id="audit-title">A decision you can check.</h2><p>The receipt includes the books, evidence, constraints and both results. A separate checker enumerates the feasible slates again.</p><label class="secondary upload" for="receipt-file">Check a saved receipt <input type="file" id="receipt-file" accept=".json,application/json"></label></div>
+      <div class="audit-result"><p class="eyebrow">INDEPENDENT REPLAY</p><div id="verification" role="status">Choose a receipt or build a slate.</div><p class="footnote">The check proves the stated objective over the supplied candidate set. It does not authenticate Qloo’s response or prove real-world satisfaction.</p></div>
+    </section>
+  </main>
+  <footer class="shell"><span class="wordmark">counterpoint.</span><p>Cultural discovery by Qloo. Editorial judgment stays with you.</p><button class="text-button" id="agent-open">Use as an agent tool ↗</button></footer>
+  <dialog id="briefs-dialog" aria-labelledby="briefs-title"><div class="dialog-head"><p class="eyebrow">FROM CULTURE TO BOOKS</p><button class="close" data-close="briefs-dialog" aria-label="Close cultural briefs">×</button></div><h2 id="briefs-title">Give each brief a starting point.</h2><p>Choose 2–4 editorial briefs. Add up to three public films, artists or books to each. Confirm the exact match before continuing.</p><p class="notice-inline" id="builder-availability"></p><div id="brief-editor"></div><button class="secondary" id="add-brief">+ Add a brief</button><div class="dialog-bottom"><p class="small">Only public cultural references go to Qloo. Don’t enter customer identities or personal profiles.</p><button class="primary" id="discover">Find books for these briefs →</button></div><div id="builder-error" class="error" role="alert" hidden></div></dialog>
+  <dialog id="about-dialog" aria-labelledby="about-title"><div class="dialog-head"><p class="eyebrow">WHAT THE NUMBERS MEAN</p><button class="close" data-close="about-dialog" aria-label="Close explanation">×</button></div><h2 id="about-title">The quiet brief counts, too.</h2><p>Qloo discovers books from your selected cultural references. Counterpoint collects a shared pool of up to 24 books, then asks Qloo to rank that same pool for each brief.</p><p>For each possible slate, a brief’s coverage is its strongest book score. We maximize the lowest coverage first, then the next lowest, and so on. This is called <strong>leximin</strong>. The total-first comparison instead maximizes the sum of those coverage scores.</p><p>Both selections are exact within this small candidate pool. A different candidate pool or scoring rule can change the answer. Cross-domain associations help discovery; they cannot tell you what an individual will enjoy.</p><p>A hash detects receipt edits. A separate enumerator verifies the result. Neither is a Qloo signature or evidence of sales impact.</p></dialog>
+  <dialog id="agent-dialog" aria-labelledby="agent-title"><div class="dialog-head"><p class="eyebrow">STRUCTURED, READ-ONLY TOOLS</p><button class="close" data-close="agent-dialog" aria-label="Close agent setup">×</button></div><h2 id="agent-title">Bring your curator agent.</h2><p>Connect an MCP client using Streamable HTTP to:</p><code id="mcp-url"></code><p>Four tools expose entity search, Qloo discovery, constrained replanning and independent receipt verification. Search choices and discovery snapshots travel with their evidence.</p><p>The tools cannot buy books, send messages or modify inventory. Replanning needs no new Qloo call. Live discovery requires the server’s event access to be active.</p></dialog>
+</body>
+</html>
